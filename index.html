@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALP - Congolese Adviser in Business Law and PPP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Logo Fix Styles */
+        .logo-placeholder {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #1a3a6c;
+        }
+        
+        .logo-text span {
+            color: #d4af37;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 2rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #212529;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #d4af37;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a3a6c;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            margin-right: 20px;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: 1px solid #1a3a6c;
+            color: #1a3a6c;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .lang-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .lang-btn:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .lang-btn.active {
+            background-color: #1a3a6c;
+            color: white;
+        }
+        
+        .lang-btn:hover {
+            background-color: #1a3a6c;
+            color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #212529;
+            transition: all 0.3s ease;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo-placeholder">
+                <div class="logo-img"> <img src="logos/light-logo.jpeg" alt="CALP Logo"> </div>
+                <div class="logo-text">CALP<span>.</span></div>
+            </a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link" data-translate="nav.home">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link" data-translate="nav.about">About</a></li>
+                <li class="nav-item"><a href="#expertise" class="nav-link" data-translate="nav.expertise">Expertise</a></li>
+                <li class="nav-item"><a href="#values" class="nav-link" data-translate="nav.values">Values</a></li>
+                <li class="nav-item"><a href="#team" class="nav-link" data-translate="nav.team">Team</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+            </ul>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="fr">FR</button>
+            </div>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rest of your HTML remains exactly the same -->
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-translate="hero.title">Congolese Adviser in Business Law and PPP</h1>
+                <p class="hero-desc" data-translate="hero.description">Leading consulting and advisory firm specializing in business law, financial structuring, and Public-Private Partnership projects across the African continent.</p>
+                <a href="#contact" class="btn" data-translate="hero.button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-translate="about.title">About CALP</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="CALP Office">
+                </div>
+                <div class="about-text">
+                    <p data-translate="about.text1">Congolese Adviser in Business Law and PPP (CALP) is a leading consulting and advisory firm operating in the Democratic Republic of Congo and across the African continent.</p>
+                    <p data-translate="about.text2">CALP specializes in business law, financial structuring, and the development of Public-Private Partnership (PPP) projects. Founded by Me TUZOLANA BIMUALA Callixte, CALP brings together a multidisciplinary team composed not only of seasoned lawyers and legal experts but also of financial specialists with proven expertise in PPP project modeling and economic engineering.</p>
+                    <p data-translate="about.text3">The firm also has strong capabilities in the digital and technology sectors, with an in-depth understanding of local and regional dynamics related to digital transformation.</p>
+                    <p data-translate="about.text4">This unique combination of legal, financial, and technological expertise enables CALP to effectively support investors, businesses, and public institutions in designing, structuring, and implementing strategic projects that meet international standards while being tailored to African realities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <h2 class="section-title" data-translate="expertise.title">Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 data-translate="expertise.ohada.title">OHADA Uniform Acts</h3>
+                    <p data-translate="expertise.ohada.description">Corporate law, commercial law, arbitration, insolvency procedures, transportation of goods, etc.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 data-translate="expertise.ppp.title">Public-Private Partnerships</h3>
+                    <p data-translate="expertise.ppp.description">Financial modeling and structuring of large-scale PPP projects.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tower-cell"></i>
+                    </div>
+                    <h3 data-translate="expertise.telecom.title">Telecommunications & IT</h3>
+                    <p data-translate="expertise.telecom.description">Expert advice on technology and digital transformation matters.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3 data-translate="expertise.land.title">Land Law</h3>
+                    <p data-translate="expertise.land.description">Comprehensive legal support for property and land-related issues.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 data-translate="expertise.labour.title">Labour Law</h3>
+                    <p data-translate="expertise.labour.description">Employment law consultation and dispute resolution.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 data-translate="expertise.tax.title">Taxation & Fiscal Law</h3>
+                    <p data-translate="expertise.tax.description">Tax planning and compliance services for businesses.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 data-translate="expertise.energy.title">Energy & Utilities</h3>
+                    <p data-translate="expertise.energy.description">Legal advisory for electricity and water sector projects.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 data-translate="expertise.mining.title">Mining & Hydrocarbons</h3>
+                    <p data-translate="expertise.mining.description">Specialized legal services for extractive industries.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 data-translate="expertise.transport.title">Transportation & Logistics</h3>
+                    <p data-translate="expertise.transport.description">Legal support for transport infrastructure and logistics operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values">
+        <div class="container">
+            <h2 class="section-title" data-translate="values.title">Our Values</h2>
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 data-translate="values.professionalism.title">Professionalism</h3>
+                    <p data-translate="values.professionalism.description">We maintain the highest standards of professional service and expertise in all our engagements.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 data-translate="values.integrity.title">Integrity</h3>
+                    <p data-translate="values.integrity.description">We operate with honesty and transparency, building trust with our clients and partners.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 data-translate="values.excellence.title">Excellence</h3>
+                    <p data-translate="values.excelence.description">We strive for excellence in all aspects of our work, delivering superior results for our clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title" data-translate="team.title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Me TUZOLANA BIMUALA Callixte" class="member-img">
+                    <div class="member-info">
+                        <h3>Me TUZOLANA BIMUALA Callixte</h3>
+                        <p data-translate="team.founder.role">Founder & Principal Attorney</p>
+                        <p data-translate="team.founder.description">Avocat au barreau de Kinshasa/Matete since 2003, holder of a law degree from the University of Kinshasa (2000) and a Master's in business law and management from the University of Liège (2017).</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Legal Expert" class="member-img">
+                    <div class="member-info">
+                        <h3 data-translate="team.legal.title">Legal Experts</h3>
+                        <p data-translate="team.legal.role">Experienced Lawyers</p>
+                        <p data-translate="team.legal.description">Our team includes seasoned lawyers with deep expertise in business law, OHADA regulations, and various specialized legal domains.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Financial Expert" class="member-img">
+                    <div class="member-info">
+                        <h3 data-translate="team.financial.title">Financial Specialists</h3>
+                        <p data-translate="team.financial.role">PPP Project Modeling</p>
+                        <p data-translate="team.financial.description">Our financial experts specialize in PPP project modeling and economic engineering, ensuring the financial viability of large-scale projects.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Technology Expert" class="member-img">
+                    <div class="member-info">
+                        <h3 data-translate="team.tech.title">Technology Consultants</h3>
+                        <p data-translate="team.tech.role">Digital Transformation</p>
+                        <p data-translate="team.tech.description">Our technology specialists provide insights on digital transformation and help clients navigate the evolving tech landscape in Africa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-translate="contact.title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 data-translate="contact.getInTouch">Get in Touch</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p data-translate="contact.address">Collège Boboto, Commune de la Gombe, Kinshasa, Democratic Republic of Congo</p>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p>(+243) 815033261</p>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>ctuzolana@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <p data-translate="contact.hours">Monday to Friday, 8:00 AM – 5:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 data-translate="contact.sendMessage">Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required data-translate-placeholder="contact.form.name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required data-translate-placeholder="contact.form.email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" data-translate-placeholder="contact.form.subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required data-translate-placeholder="contact.form.message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" data-translate="contact.form.button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3 class="footer-title">CALP</h3>
+                    <p data-translate="footer.description">Congolese Adviser in Business Law and PPP (CALP) is a leading consulting and advisory firm operating in the Democratic Republic of Congo and across the African continent.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title" data-translate="footer.quickLinks">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" data-translate="nav.home">Home</a></li>
+                        <li class="footer-link"><a href="#about" data-translate="nav.about">About</a></li>
+                        <li class="footer-link"><a href="#expertise" data-translate="nav.expertise">Expertise</a></li>
+                        <li class="footer-link"><a href="#values" data-translate="nav.values">Values</a></li>
+                        <li class="footer-link"><a href-#team" data-translate="nav.team">Team</a></li>
+                        <li class="footer-link"><a href="#contact" data-translate="nav.contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title" data-translate="footer.legal">Legal</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" data-translate="footer.privacy">Privacy Policy</a></li>
+                        <li class="footer-link"><a href="#" data-translate="footer.terms">Terms of Use</a></li>
+                        <li class="footer-link"><a href="#" data-translate="footer.notice">Legal Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CALP - <span data-translate="footer.copyright">Congolese Adviser in Business Law and PPP. All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
