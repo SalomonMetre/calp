@@ -248,16 +248,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Form Submission
+// Form Submission
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert(currentLang === 'en' 
-            ? 'Thank you for your message. We will get back to you soon!' 
-            : 'Merci pour votre message. Nous vous répondrons bientôt!');
+
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+
+        // Always send to this recipient
+        const recipient = "ctuzolana@gmail.com";
+
+        // Build mailto link (only subject + message)
+        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+        // Open default mail client
+        window.location.href = mailtoLink;
+
         this.reset();
     });
 }
+
 
 // Language switcher functionality
 document.querySelectorAll('.lang-btn').forEach(button => {
@@ -270,3 +282,4 @@ document.querySelectorAll('.lang-btn').forEach(button => {
 document.addEventListener('DOMContentLoaded', function() {
     changeLanguage(currentLang);
 });
+
