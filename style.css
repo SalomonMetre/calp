@@ -538,3 +538,69 @@ footer {
         font-size: 2.5rem;
     }
 }
+
+/* shared extra card styling */
+.service-card-header{
+    color:rgb(255, 255, 255);
+}
+
+.service-card-extra {
+  position: relative;
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  overflow: hidden; /* keeps blur inside */
+}
+
+.service-card-extra::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: no-repeat center center;
+  background-size: cover;
+  filter: blur(3px);
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+.service-card-extra > * {
+  position: relative;
+  z-index: 1; /* keep text/icon above blur */
+}
+
+/* individual backgrounds */
+.service-card-ohada::before {
+  background-image: url('images/ohada_pexels-mibernaa-28948052.jpg');
+}
+
+.service-card-public-private::before{
+    background-image: url('images/public_private_pexels-jakubzerdzicki-16062965.jpg');
+}
+
+.service-card-telecom::before{
+    background-image: url('images/telecom_pexels-orlovamaria-4916517.jpg');
+}
+
+.service-card-land-law::before{
+    background-image: url('images/land_law_pexels-mikhail-nilov-8731042.jpg');
+}
+
+.service-card-labour::before{
+    background-image: url('images/labour_law_pexels-pavel-danilyuk-8112172.jpg');
+}
+
+.service-card-tax-fiscal::before{
+    background-image: url('images/tax_fiscal_pexels-n-voitkevich-6863193.jpg');
+}
+
+.service-card-energy::before{
+    background-image: url('images/energy_pexels-jan-van-der-wolf-11680885-10911847.jpg');
+}
+
+.service-card-mining::before{
+    background-image: url('images/mining_pexels-n-voitkevich-7173047.jpg');
+}
+
+.service-card-transportation::before{
+    background-image: url('images/transportation_pexels-sie7e-19156504.jpg');
+}
